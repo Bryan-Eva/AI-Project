@@ -1,0 +1,15 @@
+# Editors
+
+.vscode/
+.idea/
+
+# macOS
+
+.DS_Store
+
+# Environment
+
+.env
+.venv
+env/
+venv/
