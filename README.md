@@ -18,7 +18,7 @@ python3 -m venv [資料夾名稱]
    .[資料夾名稱]\Scripts\activate.bin
    ```
 
-   - Linux & MacOs
+   - Linux & macOS
 
    ```shell
    source ./[資料夾名稱]/bin/activate
@@ -35,3 +35,9 @@ pip install -r requirements.txt
 ```shell
 deactivate
 ```
+
+## 流程圖
+
+### Flow chart
+
+### Use Case
