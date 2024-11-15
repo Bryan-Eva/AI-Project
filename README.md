@@ -40,4 +40,8 @@ deactivate
 
 ### Flow chart
 
+![flowchart](./images/FlowChart.png)
+
 ### Use Case
+
+![usecase](./images/UseCase.png)
