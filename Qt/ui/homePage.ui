@@ -30,7 +30,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/Itsuki_4.jpg);</string>
+    <string notr="true">border-image: url(:/icons/icons/Itsuki_4.jpg);</string>
    </property>
   </widget>
   <widget class="QWidget" name="verticalLayoutWidget">
@@ -173,7 +173,7 @@
   </widget>
  </widget>
  <resources>
-  <include location="image.qrc"/>
+  <include location="../images.qrc"/>
  </resources>
  <connections/>
 </ui>

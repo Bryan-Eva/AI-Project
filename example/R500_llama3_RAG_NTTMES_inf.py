@@ -18,8 +18,8 @@ import os
 from langchain_community.llms import Ollama
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
-from langchain_community.embeddings import OllamaEmbeddings
-from langchain.vectorstores import FAISS
+from langchain_community.embeddings import OllamaEmbeddings, HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import ChatPromptTemplate
 import argparse
 import shutil
@@ -28,19 +28,19 @@ from datetime import timedelta
 import time
 import numpy as np
 import math
-import numpy as np
 import datetime
-import random
 from datetime import datetime
 import random
 import string
 import os
 
+from transformers.models.cvt.convert_cvt_original_pytorch_checkpoint_to_pytorch import embeddings
+
 
 def setinfo(c_logPath='r500.txt',type='info',text=''):
     tt2 = str(datetime.now().strftime("%Y%m%d_%H:%M:%S.%f")) #取到秒鐘
     #print("{:20s}|{:>16s}|{}".format(tt2,str(type).upper(),text))
-    with open(c_logPath, 'a+') as f: #, encoding='utf-8'
+    with open(c_logPath, 'a+', encoding='utf-8') as f: #, encoding='utf-8'
         f.write("{:20s}|{:>16s}|{}\n".format(tt2,str(type).upper(),text))
 def genguidtxt():
     now = datetime.now()
@@ -69,9 +69,10 @@ def prompt_template():
     ])
     return prompt
 
-def load_trained_db(DB_FAISS_PATH="./NTTPDF_db"):
-
-    embeddings = OllamaEmbeddings()
+def load_trained_db(DB_FAISS_PATH="../output_model"):
+    embeddings =  HuggingFaceEmbeddings(model_name= 'sentence-transformers/all-MiniLM-L12-v2',
+                                        model_kwargs={'device': 'cpu'})
+    #embeddings = OllamaEmbeddings()
     try:
         vectordb = FAISS.load_local(DB_FAISS_PATH, embeddings,allow_dangerous_deserialization=True)
         # 將向量資料庫設為檢索器
@@ -98,7 +99,7 @@ def main(config):
     if(f==1):
         retrieval_chain = create_retrieval_chain(retriever, document_chain)
 
-        context = ['Assuming you are an expert in EXC-MES system operations and factory communications']
+        context = ['Assuming you are an expert in smart factory, software and operations communications']
         input_text = input('>>> 請提問... (輸入 -1 表示結束)\n')
         index = 1
         while input_text.lower() != '-1':
@@ -129,10 +130,10 @@ def main(config):
             index +=1
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
-    parser.add_argument('--m', type=str, default="/home/rachelliu/2024_llama3/NTTPDF_db")
-    parser.add_argument('--gpt', type=str, default='llama3', choices=['llama3','phi3','mistral', 'llama2'])
+    parser.add_argument('--m', type=str, default="../output_model")
+    parser.add_argument('--gpt', type=str, default='llama3', choices=['llama3', 'llama2', 'phi3', 'mistral'])
     parser.add_argument('--isref', type=int, default=0, choices=[0,1])
     parser.add_argument('--islog', type=int, default=1, choices=[0,1])
-    parser.add_argument('--logpath', type=str, default=r"./nttlog")
+    parser.add_argument('--logpath', type=str, default=r"../log")
     config = parser.parse_args()
     main(config)

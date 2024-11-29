@@ -20,7 +20,7 @@ class Ui_Form(object):
         Form.setFont(font)
         self.listView = QtWidgets.QListView(parent=Form)
         self.listView.setGeometry(QtCore.QRect(0, 0, 871, 591))
-        self.listView.setStyleSheet("border-image: url(./Qt/Itsuki_4.jpg);")
+        self.listView.setStyleSheet("border-image: url(./Qt/icons/Itsuki_4.jpg);")
         self.listView.setObjectName("listView")
         self.verticalLayoutWidget = QtWidgets.QWidget(parent=Form)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(340, 160, 201, 371))

@@ -12,9 +12,10 @@ from datetime import datetime
 import numpy as np
 import time
 from datetime import timedelta
-DATA_PATH = r"D:/R500-A30335/train_input_data/20240409_test_data"
+#DATA_PATH = r"D:/R500-A30335/train_input_data/20240409_test_data"
+DATA_PATH = "../pdf"
 #DB_FAISS_PATH = os.path.join(r"D:/R500-A30335/train_output_FAISS", os.path.basename(DATA_PATH))
-DB_FAISS_PATH = r"D:/R500-A30335/train_output_FAISS"
+DB_FAISS_PATH = "../train_output_FAISS"
 
 # Create vector database
 def create_vector_db():
@@ -28,7 +29,7 @@ def create_vector_db():
     texts = text_splitter.split_documents(documents)
 
     embeddings = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2',
-                                       model_kwargs={'device': 'cuda'})
+                                       model_kwargs={'device': 'cpu'})
 
     db = FAISS.from_documents(texts, embeddings)
     if(not os.path.exists(DB_FAISS_PATH)): os.makedirs(DB_FAISS_PATH)
@@ -40,11 +41,7 @@ if __name__ == "__main__":
     parser=argparse.ArgumentParser()
     parser.add_argument('--data', type=str, default=DATA_PATH)
     parser.add_argument('--faiss', type=str, default=DB_FAISS_PATH)
-    
-    
-    
-    
-    
+
     #--data /home/hduser/Desktop/chainlit/trainData/EDA+DSO+DSE
     #--faiss /home/hduser/Desktop/chainlit/DSOV1
     config = parser.parse_args()
