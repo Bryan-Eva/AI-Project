@@ -1,11 +1,16 @@
-def CreateQTwindow():
-    return 0
+import sys
+from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QStackedWidget, QVBoxLayout
+from mainApp import MainApp
+
 
 def main():
-    return 0
+    app = QApplication(sys.argv)
+    window = MainApp()
+    window.show()
+    sys.exit(app.exec())
+
 
 if "__main__" == __name__:
     # TODO: PyQt- homepage
     # TODO: PyQt- coursepage
-    CreateQTwindow()
     main()

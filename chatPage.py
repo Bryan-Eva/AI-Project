@@ -10,11 +10,11 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtCore import Qt
 from input import Ui_Form as InputCell
 from output import Ui_Form as OutputCell
-
+import chat
 
 class Ui_Form(object):
     is_ollama_answer = True
-
+    chat_instance = chat.get_default_chat_instance()
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(1000, 700)
@@ -63,7 +63,7 @@ class Ui_Form(object):
         self.text_edit.setText("")
         self.add_user_input_to_chatroom(question)
         self.is_ollama_answer = False
-        answer = f"{question} - ans"
+        answer = self.chat_instance.ask(question)
         self.add_ollama_output_to_chatroom(answer)
         self.is_ollama_answer = True
         self.on_textEdit_textChanged()
