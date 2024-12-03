@@ -7,100 +7,52 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtCore import Qt
 
 
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(869, 582)
-        font = QtGui.QFont()
-        font.setPointSize(6)
-        font.setBold(True)
-        font.setWeight(75)
-        Form.setFont(font)
-        self.listView = QtWidgets.QListView(parent=Form)
-        self.listView.setGeometry(QtCore.QRect(0, 0, 871, 591))
-        self.listView.setStyleSheet("border-image: url(./Qt/icons/Itsuki_4.jpg);")
-        self.listView.setObjectName("listView")
-        self.verticalLayoutWidget = QtWidgets.QWidget(parent=Form)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(340, 160, 201, 371))
-        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.courseButton = QtWidgets.QPushButton(parent=self.verticalLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.courseButton.sizePolicy().hasHeightForWidth())
-        self.courseButton.setSizePolicy(sizePolicy)
-        self.courseButton.setMaximumSize(QtCore.QSize(200, 45))
-        font = QtGui.QFont()
-        font.setFamily("標楷體")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setWeight(50)
-        self.courseButton.setFont(font)
-        self.courseButton.setObjectName("courseButton")
+        Form.resize(1000, 700)
+        self.verticalLayout = QtWidgets.QVBoxLayout(Form)
+
+        self.title = QtWidgets.QLabel(parent=Form)
+        self.title.setText(
+            "<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; font-weight:600; color:#aaaaff;\">員工訓練與知識管理平台</span></p></body></html>")
+        self.title.setMaximumHeight(100)
+        self.title.setStyleSheet("""
+    background-color: white;
+    border: 1px solid #aaaaff;
+    border-radius: 10px;  /* 圓角 */
+    padding: 10px;       /* 內邊距 */
+""")
+
+        self.courseButton = QtWidgets.QPushButton(
+            "課程培訓", parent=Form)
+        self.courseButton.setMaximumHeight(100)
+
+        self.testingButton = QtWidgets.QPushButton(
+            "進行測驗", parent=Form)
+        self.testingButton.setMaximumHeight(100)
+
+        self.questionButton = QtWidgets.QPushButton(
+            "問卷調查", parent=Form)
+        self.questionButton.setMaximumHeight(100)
+
+        spacerItem = QtWidgets.QSpacerItem(20, 20)
+        self.verticalLayout.addItem(spacerItem)
+        self.verticalLayout.addWidget(self.title)
+        self.verticalLayout.addItem(spacerItem)
         self.verticalLayout.addWidget(self.courseButton)
-        self.testingButton = QtWidgets.QPushButton(parent=self.verticalLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.testingButton.sizePolicy().hasHeightForWidth())
-        self.testingButton.setSizePolicy(sizePolicy)
-        self.testingButton.setMaximumSize(QtCore.QSize(200, 45))
-        font = QtGui.QFont()
-        font.setFamily("標楷體")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setWeight(50)
-        self.testingButton.setFont(font)
-        self.testingButton.setObjectName("testingButton")
+        self.verticalLayout.addItem(spacerItem)
         self.verticalLayout.addWidget(self.testingButton)
-        self.questionButton = QtWidgets.QPushButton(parent=self.verticalLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.questionButton.sizePolicy().hasHeightForWidth())
-        self.questionButton.setSizePolicy(sizePolicy)
-        self.questionButton.setMaximumSize(QtCore.QSize(200, 45))
-        font = QtGui.QFont()
-        font.setFamily("標楷體")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setWeight(50)
-        self.questionButton.setFont(font)
-        self.questionButton.setObjectName("questionButton")
+        self.verticalLayout.addItem(spacerItem)
         self.verticalLayout.addWidget(self.questionButton)
-        self.label = QtWidgets.QLabel(parent=Form)
-        self.label.setGeometry(QtCore.QRect(310, 110, 271, 51))
-        font = QtGui.QFont()
-        font.setFamily("標楷體")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setWeight(50)
-        self.label.setFont(font)
-        self.label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        self.label.setAutoFillBackground(True)
-        self.label.setFrameShape(QtWidgets.QFrame.Shape.Panel)
-        self.label.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
-        self.label.setTextFormat(QtCore.Qt.TextFormat.AutoText)
-        self.label.setScaledContents(False)
-        self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.label.setWordWrap(False)
-        self.label.setObjectName("label")
+        self.verticalLayout.addItem(spacerItem)
 
-        self.retranslateUi(Form)
+        self.verticalLayout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+
         QtCore.QMetaObject.connectSlotsByName(Form)
-
-    def retranslateUi(self, Form):
-        _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "ETKMP"))
-        self.courseButton.setText(_translate("Form", "課程培訓"))
-        self.testingButton.setText(_translate("Form", "進行測驗"))
-        self.questionButton.setText(_translate("Form", "問卷調查"))
-        self.label.setText(_translate("Form", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:600; color:#aaaaff;\">員工訓練與知識管理平台</span></p></body></html>"))
 
 
 if __name__ == "__main__":
