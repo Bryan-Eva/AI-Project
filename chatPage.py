@@ -7,58 +7,80 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-
+from PyQt6.QtCore import Qt
+from input import Ui_Form as InputCell
+from output import Ui_Form as OutputCell
+import chat
 
 class Ui_Form(object):
+    is_ollama_answer = True
+    chat_instance = chat.get_default_chat_instance()
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(1000, 679)
-        Form.setMaximumSize(QtCore.QSize(1000, 1000))
+        Form.resize(1000, 700)
         self.scrollArea = QtWidgets.QScrollArea(parent=Form)
-        self.scrollArea.setGeometry(QtCore.QRect(20, 10, 951, 501))
+        self.scrollArea.setGeometry(QtCore.QRect(20, 20, 960, 500))
         self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setObjectName("scrollArea")
-        self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 949, 499))
-        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        self.listView = QtWidgets.QListView(parent=Form)
-        self.listView.setGeometry(QtCore.QRect(0, -30, 1001, 711))
-        self.listView.setStyleSheet("border-image: url(./Qt/icons/Itsuki_4.jpg);")
-        self.listView.setObjectName("listView")
-        self.frame = QtWidgets.QFrame(parent=Form)
-        self.frame.setGeometry(QtCore.QRect(190, 540, 641, 100))
-        self.frame.setMaximumSize(QtCore.QSize(16777215, 100))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.frame.setFont(font)
-        self.frame.setAutoFillBackground(False)
-        self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame.setObjectName("frame")
-        self.gridLayout = QtWidgets.QGridLayout(self.frame)
-        self.gridLayout.setObjectName("gridLayout")
-        self.textEdit = QtWidgets.QTextEdit(parent=self.frame)
-        self.textEdit.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.textEdit.setObjectName("textEdit")
-        self.gridLayout.addWidget(self.textEdit, 1, 1, 1, 1)
-        self.pushButton = QtWidgets.QPushButton(parent=self.frame)
-        self.pushButton.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("./Qt/icons/send.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton.setIcon(icon)
-        self.pushButton.setObjectName("pushButton")
-        self.gridLayout.addWidget(self.pushButton, 1, 2, 1, 1)
-        self.listView.raise_()
-        self.scrollArea.raise_()
-        self.frame.raise_()
 
-        self.retranslateUi(Form)
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.chatroom_layout = QtWidgets.QVBoxLayout()
+        self.chatroom_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        self.scrollAreaWidgetContents.setLayout(self.chatroom_layout)
+
+        self.input_box = QtWidgets.QWidget(parent=Form)
+        self.input_box.setObjectName("inputBox")
+        self.input_box.setStyleSheet("""#inputBox {background-color: white;
+                                     border-radius: 10px;  /* 圓角 */}""")
+        self.input_box.setGeometry(QtCore.QRect(100, 540, 800, 150))
+        self.input_box_layout = QtWidgets.QHBoxLayout()
+        self.input_box.setLayout(self.input_box_layout)
+
+        self.text_edit = QtWidgets.QTextEdit(parent=self.input_box)
+        self.input_box_layout.addWidget(self.text_edit)
+        self.text_edit.textChanged.connect(
+            lambda: self.on_textEdit_textChanged())
+
+        self.send_button = QtWidgets.QPushButton(parent=self.input_box)
+        self.send_button.setEnabled(False)
+        self.send_button.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("./Qt/icons/send.svg"),
+                       QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.send_button.setIcon(icon)
+        self.input_box_layout.addWidget(self.send_button)
+        self.send_button.clicked.connect(lambda: self.on_pushButton_clicked())
+
         QtCore.QMetaObject.connectSlotsByName(Form)
 
-    def retranslateUi(self, Form):
-        _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+    def on_textEdit_textChanged(self):
+        question = self.text_edit.toPlainText()
+        self.send_button.setEnabled(
+            bool(question.strip()) and self.is_ollama_answer)
+
+    def on_pushButton_clicked(self):
+        question = self.text_edit.toPlainText()
+        self.text_edit.setText("")
+        self.add_user_input_to_chatroom(question)
+        self.is_ollama_answer = False
+        answer = self.chat_instance.ask(question)
+        self.add_ollama_output_to_chatroom(answer)
+        self.is_ollama_answer = True
+        self.on_textEdit_textChanged()
+
+    def add_user_input_to_chatroom(self, question):
+        input_cell = InputCell()
+        widget = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents)
+        input_cell.setupUi(widget)
+        input_cell.label_2.setText(question)
+        self.chatroom_layout.addWidget(widget)
+
+    def add_ollama_output_to_chatroom(self, answer):
+        output_cell = OutputCell()
+        widget = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents)
+        output_cell.setupUi(widget)
+        output_cell.label_2.setText(answer)
+        self.chatroom_layout.addWidget(widget)
 
 
 if __name__ == "__main__":

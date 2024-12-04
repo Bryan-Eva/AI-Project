@@ -7,90 +7,42 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtCore import Qt
 
 
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(992, 108)
-        Form.setStyleSheet("#Form {\n"
-"    background: #fff;\n"
-"}")
-        self.gridLayout_3 = QtWidgets.QGridLayout(Form)
-        self.gridLayout_3.setObjectName("gridLayout_3")
-        self.frame = QtWidgets.QFrame(parent=Form)
-        self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame.setObjectName("frame")
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.frame)
-        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout_2.setSpacing(0)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        spacerItem = QtWidgets.QSpacerItem(18, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_2.addItem(spacerItem, 0, 0, 1, 1)
-        self.frame_3 = QtWidgets.QFrame(parent=self.frame)
-        self.frame_3.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_3.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_3.setObjectName("frame_3")
-        self.gridLayout = QtWidgets.QGridLayout(self.frame_3)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout.setSpacing(0)
-        self.gridLayout.setObjectName("gridLayout")
-        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout.addItem(spacerItem1, 1, 0, 2, 1)
-        self.pushButton = QtWidgets.QPushButton(parent=self.frame_3)
-        self.pushButton.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("./Qt/icons/thumb_up.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton.setIcon(icon)
-        self.pushButton.setIconSize(QtCore.QSize(18, 18))
-        self.pushButton.setObjectName("pushButton")
-        self.gridLayout.addWidget(self.pushButton, 0, 0, 1, 1)
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout.addItem(spacerItem2, 1, 2, 1, 1)
-        self.pushButton_2 = QtWidgets.QPushButton(parent=self.frame_3)
-        self.pushButton_2.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("./Qt/icons/thumb_down.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_2.setIcon(icon1)
-        self.pushButton_2.setIconSize(QtCore.QSize(18, 18))
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.gridLayout.addWidget(self.pushButton_2, 0, 1, 1, 1)
-        self.gridLayout_2.addWidget(self.frame_3, 0, 3, 1, 1)
-        self.frame_2 = QtWidgets.QFrame(parent=self.frame)
-        self.frame_2.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_2.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_2.setObjectName("frame_2")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.frame_2)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout.setSpacing(0)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.label = QtWidgets.QLabel(parent=self.frame_2)
-        self.label.setMinimumSize(QtCore.QSize(30, 30))
-        self.label.setMaximumSize(QtCore.QSize(30, 30))
-        self.label.setText("")
+        Form.setObjectName("Form")
+        self.hLayout = QtWidgets.QHBoxLayout(Form)
+        self.hLayout.setAlignment(Qt.AlignmentFlag.AlignLeft)
+
+        self.label = QtWidgets.QLabel(parent=Form)
         self.label.setPixmap(QtGui.QPixmap("./Qt/icons/llama.png"))
         self.label.setScaledContents(True)
-        self.label.setObjectName("label")
-        self.verticalLayout.addWidget(self.label)
-        spacerItem3 = QtWidgets.QSpacerItem(28, 72, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.verticalLayout.addItem(spacerItem3)
-        self.gridLayout_2.addWidget(self.frame_2, 0, 1, 1, 1)
-        spacerItem4 = QtWidgets.QSpacerItem(182, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_2.addItem(spacerItem4, 0, 5, 1, 1)
-        self.label_2 = QtWidgets.QLabel(parent=self.frame)
-        self.label_2.setMinimumSize(QtCore.QSize(600, 0))
-        self.label_2.setObjectName("label_2")
-        self.gridLayout_2.addWidget(self.label_2, 0, 2, 1, 1)
-        self.gridLayout_3.addWidget(self.frame, 0, 0, 1, 1)
+        self.label.setMaximumSize(QtCore.QSize(30, 30))
+        self.hLayout.addWidget(self.label)
 
-        self.retranslateUi(Form)
+        self.label_2 = QtWidgets.QLabel(parent=Form)
+        self.hLayout.addWidget(self.label_2)
+
+        self.pushButton = QtWidgets.QPushButton(parent=Form)
+        self.pushButton.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("./Qt/icons/thumb_up.svg"),
+                       QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton.setIcon(icon)
+        self.hLayout.addWidget(self.pushButton)
+
+        self.pushButton_2 = QtWidgets.QPushButton(parent=Form)
+        self.pushButton_2.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("./Qt/icons/thumb_down.svg"),
+                        QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_2.setIcon(icon1)
+        self.hLayout.addWidget(self.pushButton_2)
+
         QtCore.QMetaObject.connectSlotsByName(Form)
-
-    def retranslateUi(self, Form):
-        _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.label_2.setText(_translate("Form", "TextLabel"))
 
 
 if __name__ == "__main__":
@@ -99,5 +51,6 @@ if __name__ == "__main__":
     Form = QtWidgets.QWidget()
     ui = Ui_Form()
     ui.setupUi(Form)
+    ui.label_2.setText("TestTestTEst")
     Form.show()
     sys.exit(app.exec())
