@@ -1,0 +1,106 @@
+[
+    {
+        "title": "課程介紹",
+        "content": "本課程旨在幫助學員掌握 Apache Tomcat 的基本概念、安裝、配置、管理和優化技術，並學會如何在實際項目中部署 Web 應用程式。Tomcat 是一個開源的 Java Servlet 容器，廣泛應用於企業級 Web 應用的開發和運行。學員將從基本的伺服器配置到進階的性能調優和安全設置，全面學習如何管理和使用 Tomcat。"
+    },
+    {
+        "title": "什麼是 Apache Tomcat？",
+        "content": "Apache Tomcat 是由 Apache 軟體基金會開發的開源軟體，實現了 Java Servlet 和 JavaServer Pages (JSP) 技術。Tomcat 不僅支持 Servlet 和 JSP，還支持 WebSocket 和其他協議，是運行 Java Web 應用的理想選擇。Tomcat 提供了一個高效、可擴展的平台來部署和管理 Web 應用，並且由於它的開源性，許多企業和開發者選擇 Tomcat 作為他們的 Web 伺服器。"
+    },
+    {
+        "title": "Tomcat 的歷史與發展",
+        "content": "Tomcat 最早是由 Apache 軟體基金會於 1999 年開發，作為 Java Servlet 和 JSP 的參考實現。隨著 Java Web 應用的普及，Tomcat 不斷升級並加入更多功能，如支持 WebSocket、改進的性能和擴展性。Tomcat 現在已經成為最流行的開源 Web 伺服器之一，許多企業和開發者使用它來構建可擴展的 Java Web 應用。"
+    },
+    {
+        "title": "Apache Tomcat 的優勢與使用場景",
+        "content": "Tomcat 作為一個開源的 Web 應用伺服器，具備許多優勢。首先，它是輕量級且快速的，適合小型到中型應用的開發。其次，Tomcat 支援 Java 標準規範（如 Servlet 3.1 和 JSP 2.3），並且能與各種 Java Web 應用框架（如 Spring、Hibernate）兼容。Tomcat 也可以作為其他 Web 技術（如 PHP 和 Node.js）的反向代理伺服器，並提供穩定的性能和高可擴展性。"
+    },
+    {
+        "title": "安裝與設定",
+        "content": "在這部分，學員將學習如何安裝和配置 Apache Tomcat，包括配置相關的環境變數（如 JAVA_HOME 和 CATALINA_HOME），設置伺服器的工作環境，並了解 Tomcat 配置檔案的結構和用途。"
+    },
+    {
+        "title": "安裝 Apache Tomcat",
+        "content": "安裝 Apache Tomcat 涉及多個步驟，包括下載 Tomcat 的最新版本，安裝 Java 開發工具包（JDK），配置必要的環境變數以及啟動 Tomcat 伺服器。安裝過程中，學員將學會如何在 Windows 和 Linux 系統上設置這些變數並測試 Tomcat 是否成功啟動。在 Windows 上，學員需要將 Tomcat 安裝到指定目錄，設置 CATALINA_HOME，並將 Tomcat 加入到系統的 PATH 中。Linux 系統則可以使用包管理器安裝，或者從 Apache 官網下載並手動安裝。"
+    },
+    {
+        "title": "Windows 系統安裝步驟",
+        "content": "在 Windows 上，安裝 Tomcat 主要分為以下幾步：\n1. 下載 Tomcat 最新版本的 zip 檔案，並解壓縮到目標目錄。\n2. 配置 JAVA_HOME 和 CATALINA_HOME 環境變數，使 Tomcat 能夠找到 Java 和 Tomcat 路徑。\n3. 使用命令行執行 startup.bat 啟動 Tomcat，並在瀏覽器中訪問 http://localhost:8080 測試是否啟動成功。如果出現頁面，則表示安裝成功。\n4. 在 Windows 中，也可以設置 Tomcat 服務，讓 Tomcat 作為 Windows 服務自動啟動。"
+    },
+    {
+        "title": "Linux 系統安裝步驟",
+        "content": "在 Linux 上，學員可以通過以下方式安裝 Tomcat：\n1. 使用包管理器（例如 apt 或 yum）安裝 Tomcat，或者從 Apache 官網下載 Tomcat，然後解壓縮到目標目錄。\n2. 設置環境變數 JAVA_HOME 和 CATALINA_HOME，確保 Tomcat 能夠找到 Java 開發工具包。\n3. 配置 Tomcat 以使用端口 8080，並確保防火牆開放該端口。\n4. 启动 Tomcat 並在浏览器中访问 http://localhost:8080 测试安装是否成功。"
+    },
+    {
+        "title": "基本設定",
+        "content": "Tomcat 的基本配置文件包括 server.xml 和 web.xml，這些文件用來設置伺服器的核心參數，如端口、連接池和應用部署等。學員將學會如何修改這些配置文件，定制 Tomcat 伺服器的行為，例如設置伺服器的 HTTP 端口，配置虛擬主機，設置 SSL 配置等。"
+    },
+    {
+        "title": "Web 應用程式的部署",
+        "content": "在這一部分，學員將學習如何部署 JSP 和 Servlet Web 應用。Tomcat 支持多種方式來部署 Web 應用，學員將學會如何將應用程式打包成 WAR 檔案，並將其部署到 Tomcat 伺服器。學員還將學會如何配置 web.xml 文件來設置應用程式的路由、權限控制等。"
+    },
+    {
+        "title": "部署 JSP 和 Servlet 應用",
+        "content": "學員將學會如何將 JSP 和 Servlet 應用程式部署到 Tomcat，並了解 Tomcat 如何處理 HTTP 請求並將其路由到相應的 Servlet。學員將使用 Tomcat 管理界面來部署和管理 Web 應用，並學會如何配置和優化 Web 應用的性能。"
+    },
+    {
+        "title": "配置與管理 Web 應用的 web.xml",
+        "content": "web.xml 是 Web 應用的部署描述符，用來配置 Servlet 和其他 Web 元素。學員將學會如何設置 Servlet 的 URL 映射、配置請求過濾器、設置會話管理等。通過對 web.xml 的理解和配置，學員可以有效地管理和定制 Web 應用的行為。"
+    },
+    {
+        "title": "Tomcat 管理與監控",
+        "content": "Tomcat 提供了一個基於 Web 的管理界面，讓學員能夠簡單地部署、管理和監控 Web 應用。在這部分，學員將學會如何使用這些工具來查看伺服器狀態、管理應用、監控性能和處理錯誤。"
+    },
+    {
+        "title": "使用 Tomcat 管理界面",
+        "content": "Tomcat 提供了一個強大的管理界面，學員將學會如何登錄到管理界面來執行各種管理任務，如部署、啟動、停止 Web 應用，查看伺服器的狀態，管理 Tomcat 用戶等。"
+    },
+    {
+        "title": "日誌配置與管理",
+        "content": "Tomcat 提供了詳細的日誌記錄功能，學員將學會如何配置 Tomcat 的日誌系統，設置不同的日誌級別（如 INFO、WARN、ERROR），並學會如何分析 Tomcat 日誌來進行故障排除和性能監控。"
+    },
+    {
+        "title": "監控與性能優化",
+        "content": "學員將學會如何通過調整 JVM 參數、設置 Tomcat 的最大連接數、配置連接池等來優化 Tomcat 的性能。學員還將學習如何使用 JMX 監控 Tomcat 的運行狀況，並進行性能調優。"
+    },
+    {
+        "title": "安全性設定",
+        "content": "Tomcat 提供多種安全功能，學員將學會如何配置 Tomcat 的安全措施，如防止 SQL 注入、XSS 攻擊、設置 SSL 加密等，以保護 Web 應用的數據安全。"
+    },
+    {
+        "title": "配置 SSL",
+        "content": "學員將學會如何配置 SSL，使 Tomcat 支持 HTTPS，保護用戶的敏感數據。配置過程包括生成 SSL 憑證、配置 server.xml 中的 Connector 參數以及設置密鑰庫。"
+    },
+    {
+        "title": "設置 Tomcat 用戶權限",
+        "content": "Tomcat 提供了一個基於角色的訪問控制系統，學員將學會如何設置不同的用戶角色，並根據角色來限制對管理界面的訪問權限。這有助於提高 Tomcat 的安全性。"
+    },
+    {
+        "title": "防止跨站腳本攻擊（XSS）和 SQL 注入",
+        "content": "學員將學會如何使用 Tomcat 的安全配置來防止常見的 Web 安全問題，如 XSS 和 SQL 注入。這些攻擊利用 Web 應用的漏洞來執行惡意操作，設置防護措施可以有效避免此類問題。"
+    },
+    {
+        "title": "故障排除與維護",
+        "content": "在這部分，學員將學會如何進行 Tomcat 伺服器的故障排除，分析常見的錯誤訊息，並學會如何維護 Tomcat 伺服器的健康狀況。學員還將學會如何處理性能瓶頸，進行錯誤日志分析，並解決常見配置問題。"
+    },
+    {
+        "title": "常見錯誤訊息分析",
+        "content": "Tomcat 會在日誌中記錄各種錯誤訊息，學員將學會如何分析這些錯誤，找出問題的根源，並根據具體情況進行修正。常見的錯誤訊息包括端口衝突、配置文件錯誤和應用啟動問題等。"
+    },
+    {
+        "title": "排除啟動錯誤與配置錯誤",
+        "content": "學員將學會如何排查 Tomcat 啟動過程中的錯誤，處理 Tomcat 配置錯誤。這些錯誤可能包括無法啟動的原因、Java 虛擬機（JVM）配置問題或 Tomcat 配置文件中的錯誤。"
+    },
+    {
+        "title": "進階應用",
+        "content": "學員將學會如何將 Tomcat 與其他開發框架（如 Spring 和 Hibernate）進行集成，並學習如何實現 Tomcat 的分佈式部署和高可用性配置。這將幫助學員部署大型應用，並確保系統的高可用性和可擴展性。"
+    },
+    {
+        "title": "集成 Tomcat 與其他框架",
+        "content": "學員將學會如何將 Tomcat 與流行的 Java 框架（如 Spring 和 Hibernate）進行集成，這使得開發者能夠構建複雜的 Web 應用。"
+    },
+    {
+        "title": "分佈式部署與高可用性配置",
+        "content": "學員將學會如何配置 Tomcat 集群來實現分佈式部署，並確保系統具備高可用性和災難恢復能力。"
+    }
+]

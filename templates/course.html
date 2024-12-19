@@ -1,0 +1,25 @@
+<!-- templates/index.html -->
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <ul class="collapsible">
+        {% for item in items %}
+        <li>
+            <div class="collapsible-header">{{ item['title'] }}</div>
+            <div class="collapsible-body"><span>{{ item['content']}}</span></div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems, options);
+    });
+    $(document).ready(function () {
+        $('.collapsible').collapsible();
+    });
+</script>
+{% endblock %}

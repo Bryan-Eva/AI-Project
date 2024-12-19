@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for member in members%}
+        <div class="col s4">
+            <div class="card medium">
+                <div class="card-image">
+                    <img
+                        class="materialboxed"
+                        src="{{member.imageUrl}}"
+                    >
+                </div>
+                <div class="card-content">
+                    <span class="card-title">{{member.name}}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{%block script%}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.materialboxed');
+        var instances = M.Materialbox.init(elems, options);
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function () {
+        $('.materialboxed').materialbox();
+    });
+</script>
+{%endblock%}

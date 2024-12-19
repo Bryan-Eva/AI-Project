@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>員工培訓與知識管理平台 ETKMP</title>
+    <!-- 引入 Materialize CSS -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    >
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        nav {
+            position: fixed;
+            /* 固定在頁面上 */
+            top: 0;
+            /* 距離頁面頂部 0px */
+            left: 0;
+            /* 距離頁面左邊 0px */
+            z-index: 1000;
+        }
+
+        .content {
+            padding-top: 60px;
+            /* 防止內容被固定導航欄擋住 */
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a
+                href="/"
+                class="brand-logo"
+            >員工培訓與知識管理平台</a>
+            <ul
+                id="nav-mobile"
+                class="right hide-on-med-and-down"
+            >
+                {%for item in navigation_items%}
+                <li><a href="{{item['url']}}">{{item['name']}}</a></li>
+                {%endfor%}
+            </ul>
+        </div>
+    </nav>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <!-- 引入 Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    {% block script %}
+    {% endblock %}
+</body>
+
+</html>
