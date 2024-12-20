@@ -1,0 +1,10 @@
+[
+    {
+        "from":"User",
+        "message":"Hello"
+    },
+    {
+        "from":"ollama",
+        "message":"Hello"
+    }    
+]

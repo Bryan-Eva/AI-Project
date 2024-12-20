@@ -1,0 +1,22 @@
+[
+    {
+        "name": "觀看課程",
+        "url": "/course"
+    },
+    {
+        "name": "測驗",
+        "url": "/test"
+    },
+    {
+        "name": "知識查詢",
+        "url": "/search"
+    },
+    {
+        "name": "知識分享與討論",
+        "url": "/discuss"
+    },
+    {
+        "name": "登入",
+        "url": "/login"
+    }
+]

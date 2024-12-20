@@ -10,6 +10,14 @@
         <div class="card-content">
             <span class="card-title">Question {{loop.index}}</span>
             <span class="card-title">{{item['question']}}</span>
+            <!-- default value -->
+            <input
+                type="radio"
+                style="display: none;"
+                checked="checked"
+                name="{{item['questionNumber']}}"
+                value="-1"
+            >
             {% for option in item['options']%}
             <p>
                 <label>

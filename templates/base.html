@@ -13,7 +13,10 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     >
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+    >
     <style>
         nav {
             position: fixed;
@@ -30,6 +33,8 @@
             /* 防止內容被固定導航欄擋住 */
         }
     </style>
+    {% block style %}
+    {% endblock %}
 </head>
 
 <body>
@@ -43,12 +48,20 @@
                 id="nav-mobile"
                 class="right hide-on-med-and-down"
             >
-                {%for item in navigation_items%}
+                {%for item in navigation%}
                 <li><a href="{{item['url']}}">{{item['name']}}</a></li>
                 {%endfor%}
             </ul>
         </div>
     </nav>
+    <div class="fixed-action-btn">
+        <a
+            class="btn-floating btn-large red"
+            href="/"
+        >
+            <i class="large material-icons">home</i>
+        </a>
+    </div>
     <div class="content">
         {% block content %}
         {% endblock %}
