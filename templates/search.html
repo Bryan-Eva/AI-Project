@@ -1,10 +1,106 @@
 {% extends 'base.html' %}
 {% block style %}
 <style>
+    .chat-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .chat-box {
+        height: 400px;
+        overflow-y: scroll;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #fff;
+    }
+
+    .chat-input {
+        width: calc(100% - 60px);
+        padding: 10px;
+        margin-right: 10px;
+    }
+
+    .chat-button {
+        padding: 10px 20px;
+    }
+
+    .message {
+        margin-bottom: 10px;
+    }
+
+    .message.user {
+        text-align: right;
+    }
+
+    .message.bot {
+        text-align: left;
+    }
 </style>
 {% endblock %}
 {% block content %}
-<div class="container">
-
+<div class="chat-container">
+    <h2>Chat with AI</h2>
+    <div class="chat-box" id="chat-box"></div>
+    <input type="text" id="chat-input" class="chat-input" placeholder="Type your message here...">
+    <button id="chat-button" class="chat-button">Send</button>
 </div>
+
+<script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        var socket = io.connect('http://127.0.0.1:5555');
+        var chatBox = document.getElementById("chat-box");
+        var chatInput = document.getElementById("chat-input");
+        var chatButton = document.getElementById("chat-button");
+        var botMessage = "";
+
+        socket.on('connect', function () {
+            socket.emit('connect_event', { data: 'User connected!' });
+        });
+
+        socket.on('server_response', function (msg) {
+            botMessage += msg.data;
+            var lastMessage = chatBox.lastChild;
+            if (lastMessage && lastMessage.className.includes("bot")) {
+                lastMessage.innerHTML = "Bot: " + marked.parse(botMessage);
+            } else {
+                var message = document.createElement("div");
+                message.className = "message bot";
+                message.innerHTML = "Bot: " + marked.parse(botMessage);
+                chatBox.appendChild(message);
+            }
+            chatBox.scrollTop = chatBox.scrollHeight;
+        });
+
+        socket.on('server_response_end', function () {
+            botMessage = "";
+        });
+
+        chatButton.addEventListener("click", function () {
+            var userMessage = chatInput.value;
+            if (userMessage.trim() !== "") {
+                var message = document.createElement("div");
+                message.className = "message user";
+                message.textContent = "You: " + userMessage;
+                chatBox.appendChild(message);
+                chatBox.scrollTop = chatBox.scrollHeight;
+
+                socket.emit('client_event', { data: userMessage });
+                chatInput.value = "";
+            }
+        });
+
+        chatInput.addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+                chatButton.click();
+            }
+        });
+    });
+</script>
 {% endblock %}
