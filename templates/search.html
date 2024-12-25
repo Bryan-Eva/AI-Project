@@ -52,6 +52,12 @@
 
 <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked-highlight/lib/index.umd.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.0/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.0/languages/go.min.js"></script>
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function () {
         var socket = io.connect('http://127.0.0.1:5555');
@@ -59,6 +65,20 @@
         var chatInput = document.getElementById("chat-input");
         var chatButton = document.getElementById("chat-button");
         var botMessage = "";
+        const { Marked } = globalThis.marked;
+        const { markedHighlight } = globalThis.markedHighlight;
+
+        const marked = new Marked(
+            markedHighlight({
+                emptyLangClass: 'hljs',
+                langPrefix: 'hljs language-',
+                highlight(code, lang, info) {
+                    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+                    return hljs.highlight(code, { language }).value;
+                }
+            })
+        );
+
 
         socket.on('connect', function () {
             socket.emit('connect_event', { data: 'User connected!' });
