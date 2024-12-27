@@ -3,6 +3,7 @@ import json
 import random
 from flask_socketio import SocketIO, emit
 from chat import get_default_chat_instance
+import datetime
 
 app = Flask(__name__)
 
@@ -99,8 +100,39 @@ def get_demo_course():
 
 @app.route("/discuss")
 def discuss():
-    return render_template("discuss.html", navigation=navigation)
+    discuss = get_demo_discuss()
+    return render_template("discuss.html", navigation=navigation,items = discuss)
 
+def get_demo_discuss():
+    with open("demo data/discuss.json", encoding='utf-8') as f:
+        return json.load(f)
+    
+
+@app.route("/discuss/<int:id>")
+def get_single_discuss(id):
+    print(id)
+    discuss = get_demo_discuss()
+    discuss = list(filter(lambda x: x['id'] == int(id), discuss))[0]
+    return render_template("single_discuss.html", navigation=navigation,item = discuss)
+
+@app.route("/leave_discuss", methods=["POST"])
+def leave_discuss():
+    data = request.get_json()
+    # insert data
+    discuss = get_demo_discuss()
+    for d in discuss:
+        if d['id'] == int(data['id']):
+            d['message'].append(
+                {
+                    "author": "You",
+                    "date": datetime.date.today().strftime("%Y-%m-%d"),
+                    "content": data["message"]
+                }
+            )
+            break
+    with open("demo data/discuss.json", 'w', encoding='utf-8') as f:
+        json.dump(discuss, f, ensure_ascii=False, indent=4)
+    return "ok"
 
 def start_server(chat=None):
     global chat_instance
