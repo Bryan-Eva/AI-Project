@@ -1,15 +1,6 @@
 {% extends 'base.html' %}
 {% block style %}
 <style>
-    .chat-container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        background-color: #f9f9f9;
-    }
-
     .chat-box {
         height: 400px;
         overflow-y: scroll;
@@ -17,16 +8,6 @@
         padding: 10px;
         margin-bottom: 10px;
         background-color: #fff;
-    }
-
-    .chat-input {
-        width: calc(100% - 60px);
-        padding: 10px;
-        margin-right: 10px;
-    }
-
-    .chat-button {
-        padding: 10px 20px;
     }
 
     .message {
@@ -40,14 +21,50 @@
     .message.bot {
         text-align: left;
     }
+
+    .input-field.input-outlined {
+        >input {
+            border: 2px solid #eee;
+            padding: 12px 16px 14px;
+            width: calc(100% - 2.5rem);
+            float: none;
+            display: block;
+            border-radius: 4px;
+            transition: box-shadow, border-color 0.15s;
+
+            &:focus:not([readonly]) {
+                border-color: #26A69B;
+                box-shadow: 0 1px 0 0px #26A69B;
+            }
+        }
+
+        >label {
+            left: 27px;
+            display: inline-flex;
+            width: auto !important;
+
+            &.active {
+                background: white;
+                border-left: 4px solid white;
+                border-right: 4px solid white;
+                transform: translateY(-1.75rem);
+                top: 1rem;
+            }
+        }
+    }
 </style>
 {% endblock %}
 {% block content %}
-<div class="chat-container">
-    <h2>Chat with AI</h2>
+<div class="container">
+    <h2>Chat with Ollama</h2>
     <div class="chat-box" id="chat-box"></div>
-    <input type="text" id="chat-input" class="chat-input" placeholder="Type your message here...">
-    <button id="chat-button" class="chat-button">Send</button>
+    <div class="input-field input-outlined">
+        <input id="chat-input" type="text">
+        <label for="chat-input">Type your message here...</label>
+    </div>
+    <button class="btn waves-effect waves-light" id="chat-button">Submit
+        <i class="material-icons right">send</i>
+    </button>
 </div>
 
 <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
