@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<form
+    class="container"
+    action="/submit"
+    method="post"
+>
+    {% for item in items %}
+    <div class="card pd-10">
+        <div class="card-content">
+            <span class="card-title">Question {{loop.index}}</span>
+            <span class="card-title">{{item['question']}}</span>
+            <!-- default value -->
+            <input
+                type="radio"
+                style="display: none;"
+                checked="checked"
+                name="{{item['questionNumber']}}"
+                value="-1"
+            >
+            {% for option in item['options']%}
+            <p>
+                <label>
+                    <input
+                        name="{{item['questionNumber']}}"
+                        type="radio"
+                        value="{{loop.index-1}}"
+                    />
+                    <span>{{option}}</span>
+                </label>
+            </p>
+            {% endfor%}
+        </div>
+    </div>
+    {% endfor %}
+    <button
+        class="btn waves-effect waves-light right"
+        type="submit"
+        style="margin-bottom: 20px;"
+    >Submit
+        <i class="material-icons right">send</i>
+    </button>
+</form>
+{% endblock %}

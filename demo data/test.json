@@ -1,0 +1,838 @@
+[
+    {
+        "question": "What is Apache Tomcat?",
+        "options": [
+            "A web server",
+            "An application server",
+            "A database server",
+            "A proxy server"
+        ],
+        "correctIndex": 1,
+        "questionNumber": 1
+    },
+    {
+        "question": "Which protocol does Tomcat use for communication between the server and web clients?",
+        "options": [
+            "HTTP",
+            "FTP",
+            "SMTP",
+            "SSH"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 2
+    },
+    {
+        "question": "What is the default port for Apache Tomcat?",
+        "options": [
+            "8080",
+            "443",
+            "80",
+            "3306"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 3
+    },
+    {
+        "question": "Which of the following is the Tomcat server's default directory for web applications?",
+        "options": [
+            "/webapps",
+            "/home",
+            "/var/www",
+            "/apps"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 4
+    },
+    {
+        "question": "Which language is Apache Tomcat primarily written in?",
+        "options": [
+            "C++",
+            "Java",
+            "Python",
+            "Ruby"
+        ],
+        "correctIndex": 1,
+        "questionNumber": 5
+    },
+    {
+        "question": "Tomcat supports which of the following Java specifications?",
+        "options": [
+            "JSP",
+            "Servlet",
+            "JSF",
+            "All of the above"
+        ],
+        "correctIndex": 3,
+        "questionNumber": 6
+    },
+    {
+        "question": "What does JSP stand for?",
+        "options": [
+            "Java Simple Pages",
+            "Java Server Pages",
+            "Java Servlet Pages",
+            "Java Secure Pages"
+        ],
+        "correctIndex": 1,
+        "questionNumber": 7
+    },
+    {
+        "question": "Tomcat uses which configuration file to set up the server's global settings?",
+        "options": [
+            "server.xml",
+            "web.xml",
+            "context.xml",
+            "host.xml"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 8
+    },
+    {
+        "question": "In which directory are the logs for Apache Tomcat typically stored?",
+        "options": [
+            "/var/log/tomcat",
+            "/logs",
+            "/webapps/logs",
+            "/tomcat/logs"
+        ],
+        "correctIndex": 3,
+        "questionNumber": 9
+    },
+    {
+        "question": "What is the purpose of the 'web.xml' file in Apache Tomcat?",
+        "options": [
+            "It defines the global configuration for the server.",
+            "It defines the configuration for web applications.",
+            "It configures logging settings.",
+            "It defines the operating system settings."
+        ],
+        "correctIndex": 1,
+        "questionNumber": 10
+    },
+    {
+        "question": "What is the function of the Apache Tomcat 'Connector'?",
+        "options": [
+            "Handles communication between clients and the server",
+            "Manages internal Java threads",
+            "Serves static files",
+            "Stores user session data"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 11
+    },
+    {
+        "question": "Apache Tomcat is part of which Java Community Process?",
+        "options": [
+            "J2EE",
+            "JCP",
+            "JVM",
+            "JDK"
+        ],
+        "correctIndex": 1,
+        "questionNumber": 12
+    },
+    {
+        "question": "What is the main purpose of Apache Tomcat?",
+        "options": [
+            "Serving static files",
+            "Running Java Servlets and JSP",
+            "Hosting Java applications",
+            "Running database queries"
+        ],
+        "correctIndex": 1,
+        "questionNumber": 13
+    },
+    {
+        "question": "What does the 'Catalina' component in Apache Tomcat represent?",
+        "options": [
+            "The core engine of Tomcat",
+            "The web application manager",
+            "The HTTP request processor",
+            "The log manager"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 14
+    },
+    {
+        "question": "What is the default directory for Apache Tomcat's temporary files?",
+        "options": [
+            "/temp",
+            "/tmp",
+            "/var/tmp",
+            "/tomcat/temp"
+        ],
+        "correctIndex": 3,
+        "questionNumber": 15
+    },
+    {
+        "question": "Which of the following is a valid life cycle of a servlet?",
+        "options": [
+            "init() -> service() -> destroy()",
+            "create() -> process() -> remove()",
+            "load() -> run() -> stop()",
+            "start() -> execute() -> terminate()"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 16
+    },
+    {
+        "question": "What is the maximum allowed session timeout in Tomcat?",
+        "options": [
+            "30 minutes",
+            "60 minutes",
+            "1 day",
+            "Unlimited"
+        ],
+        "correctIndex": 3,
+        "questionNumber": 17
+    },
+    {
+        "question": "Which file can be edited to change the default session timeout in Tomcat?",
+        "options": [
+            "context.xml",
+            "server.xml",
+            "web.xml",
+            "session.xml"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 18
+    },
+    {
+        "question": "How does Tomcat handle the deployment of web applications?",
+        "options": [
+            "By reading configuration files in the webapps directory",
+            "By running the 'deploy' command in the CLI",
+            "By automatically loading all files in the 'deploy' folder",
+            "By reading the WAR file only"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 19
+    },
+    {
+        "question": "What is the function of Tomcat's 'Manager' application?",
+        "options": [
+            "It monitors the performance of the server",
+            "It allows for the deployment and management of web applications",
+            "It generates reports of Tomcat's activities",
+            "It serves static files"
+        ],
+        "correctIndex": 1,
+        "questionNumber": 20
+    },
+    {
+        "question": "How can you secure Apache Tomcat from unauthorized access to the manager application?",
+        "options": [
+            "By editing the server.xml file to restrict access",
+            "By enabling authentication and authorization in the web.xml file",
+            "By adding firewall rules",
+            "By using SSL encryption"
+        ],
+        "correctIndex": 1,
+        "questionNumber": 21
+    },
+    {
+        "question": "\u5728Apache Tomcat\u4e2d\uff0c\u5982\u4f55\u8a2d\u5b9a\u4e00\u500bweb\u61c9\u7528\u7a0b\u5f0f\u7684\u6839\u76ee\u9304?",
+        "options": [
+            "\u4fee\u6539context.xml\u6a94\u6848",
+            "\u4fee\u6539server.xml\u6a94\u6848",
+            "\u4fee\u6539web.xml\u6a94\u6848",
+            "\u4fee\u6539config.xml\u6a94\u6848"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 22
+    },
+    {
+        "question": "Tomcat \u652f\u63f4\u54ea\u7a2e\u7248\u672c\u7684Servlet\u898f\u7bc4?",
+        "options": [
+            "Servlet 2.3",
+            "Servlet 3.0",
+            "Servlet 4.0",
+            "Servlet 5.0"
+        ],
+        "correctIndex": 2,
+        "questionNumber": 23
+    },
+    {
+        "question": "Tomcat\u4e2d\u7684\u54ea\u4e9b\u6a94\u6848\u53ef\u4ee5\u7528\u4f86\u8a2d\u5b9aWeb\u61c9\u7528\u7a0b\u5f0f\u7684\u5b89\u5168\u6027?",
+        "options": [
+            "context.xml",
+            "web.xml",
+            "server.xml",
+            "\u4ee5\u4e0a\u7686\u662f"
+        ],
+        "correctIndex": 3,
+        "questionNumber": 24
+    },
+    {
+        "question": "What is the default method for connecting a Tomcat server to a database?",
+        "options": [
+            "JDBC",
+            "JNDI",
+            "Hibernate",
+            "ODBC"
+        ],
+        "correctIndex": 1,
+        "questionNumber": 25
+    },
+    {
+        "question": "Which of the following is NOT a valid Apache Tomcat directory?",
+        "options": [
+            "/webapps",
+            "/conf",
+            "/lib",
+            "/bin"
+        ],
+        "correctIndex": 3,
+        "questionNumber": 26
+    },
+    {
+        "question": "Tomcat uses which of the following protocols for secure communication?",
+        "options": [
+            "HTTP",
+            "HTTPS",
+            "FTP",
+            "SSH"
+        ],
+        "correctIndex": 1,
+        "questionNumber": 27
+    },
+    {
+        "question": "What is the default file extension for a web application in Tomcat?",
+        "options": [
+            ".war",
+            ".ear",
+            ".jar",
+            ".zip"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 28
+    },
+    {
+        "question": "What is the function of the 'Host' element in the server.xml file of Apache Tomcat?",
+        "options": [
+            "It defines a virtual host for a web application",
+            "It specifies the location of the logs",
+            "It defines global security settings",
+            "It configures the database connection"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 29
+    },
+    {
+        "question": "In Tomcat, which file is used to configure the logging settings?",
+        "options": [
+            "log4j.properties",
+            "logging.properties",
+            "logback.xml",
+            "server.xml"
+        ],
+        "correctIndex": 1,
+        "questionNumber": 30
+    },
+    {
+        "question": "Which component in Apache Tomcat is responsible for managing the lifecycle of servlets?",
+        "options": [
+            "Catalina",
+            "Coyote",
+            "Jasper",
+            "Valve"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 31
+    },
+    {
+        "question": "What is the default method for requesting a servlet in Tomcat?",
+        "options": [
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 32
+    },
+    {
+        "question": "How do you enable SSL in Apache Tomcat?",
+        "options": [
+            "Modify the server.xml file to include a Connector element for HTTPS",
+            "Use an SSL module",
+            "Set the 'enable-ssl' flag in the configuration",
+            "Install a third-party SSL plugin"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 33
+    },
+    {
+        "question": "Which of the following is a correct directory for storing static files in Apache Tomcat?",
+        "options": [
+            "/static",
+            "/webapp/static",
+            "/htdocs",
+            "/public"
+        ],
+        "correctIndex": 1,
+        "questionNumber": 34
+    },
+    {
+        "question": "What is the function of the 'Jasper' component in Apache Tomcat?",
+        "options": [
+            "It compiles JSP files into servlets",
+            "It manages database connections",
+            "It handles HTTP requests",
+            "It serves static files"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 35
+    },
+    {
+        "question": "Which file would you modify to change the session timeout for a specific web application in Apache Tomcat?",
+        "options": [
+            "web.xml",
+            "server.xml",
+            "context.xml",
+            "session.xml"
+        ],
+        "correctIndex": 2,
+        "questionNumber": 36
+    },
+    {
+        "question": "What is the purpose of the 'work' directory in Apache Tomcat?",
+        "options": [
+            "To store compiled JSP files",
+            "To store log files",
+            "To store session data",
+            "To store web application archives (WAR)"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 37
+    },
+    {
+        "question": "Which Apache Tomcat component is responsible for handling HTTP requests?",
+        "options": [
+            "Coyote",
+            "Catalina",
+            "Jasper",
+            "Valves"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 38
+    },
+    {
+        "question": "What is the function of the 'Valve' component in Apache Tomcat?",
+        "options": [
+            "It processes HTTP requests before they reach a servlet",
+            "It compiles JSP files",
+            "It serves static content",
+            "It handles SSL encryption"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 39
+    },
+    {
+        "question": "Which of the following commands is used to start Apache Tomcat from the command line?",
+        "options": [
+            "start.bat (Windows) / start.sh (Linux)",
+            "run.bat (Windows) / run.sh (Linux)",
+            "tomcat-start.bat (Windows) / tomcat-start.sh (Linux)",
+            "tomcat-startup.bat (Windows) / tomcat-startup.sh (Linux)"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 40
+    },
+    {
+        "question": "Tomcat uses which of the following for managing database connections?",
+        "options": [
+            "JDBC Connection Pool",
+            "Hibernate",
+            "JPA",
+            "JDBC API"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 41
+    },
+    {
+        "question": "Which file is used to configure the virtual hosts in Tomcat?",
+        "options": [
+            "server.xml",
+            "context.xml",
+            "web.xml",
+            "virtualhosts.xml"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 42
+    },
+    {
+        "question": "Which of the following is NOT a valid HTTP status code that Apache Tomcat can return?",
+        "options": [
+            "404",
+            "503",
+            "400",
+            "600"
+        ],
+        "correctIndex": 3,
+        "questionNumber": 43
+    },
+    {
+        "question": "How can you restrict access to a specific web application in Tomcat?",
+        "options": [
+            "By modifying the context.xml file and adding security constraints",
+            "By modifying the server.xml file and adding a firewall rule",
+            "By using a password-protected directory",
+            "By configuring a reverse proxy"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 44
+    },
+    {
+        "question": "What is the default directory where Tomcat stores temporary files like compiled JSPs?",
+        "options": [
+            "/work",
+            "/tmp",
+            "/temp",
+            "/cache"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 45
+    },
+    {
+        "question": "Tomcat can be configured to use which of the following for load balancing?",
+        "options": [
+            "Apache HTTP Server",
+            "Nginx",
+            "HAProxy",
+            "All of the above"
+        ],
+        "correctIndex": 3,
+        "questionNumber": 46
+    },
+    {
+        "question": "How does Apache Tomcat handle session management?",
+        "options": [
+            "By using cookies or URL rewriting",
+            "By storing sessions in a database",
+            "By using SSL certificates",
+            "By caching data"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 47
+    },
+    {
+        "question": "How can you configure Tomcat to use a custom error page?",
+        "options": [
+            "By editing the error-page element in web.xml",
+            "By modifying the server.xml file",
+            "By using a separate error-handler.xml",
+            "By editing the log4j configuration"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 48
+    },
+    {
+        "question": "Which element in the web.xml file allows you to configure a filter in Tomcat?",
+        "options": [
+            "<filter-mapping>",
+            "<filter-config>",
+            "<servlet-filter>",
+            "<filter-definition>"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 49
+    },
+    {
+        "question": "What is the function of the 'Coyote' component in Tomcat?",
+        "options": [
+            "It handles HTTP connections",
+            "It manages servlet lifecycles",
+            "It compiles JSPs",
+            "It manages database connections"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 50
+    },
+    {
+        "question": "Which of the following is a valid method for managing user authentication in Tomcat?",
+        "options": [
+            "Form-based authentication",
+            "Basic authentication",
+            "Digest authentication",
+            "All of the above"
+        ],
+        "correctIndex": 3,
+        "questionNumber": 51
+    },
+    {
+        "question": "How can you configure Apache Tomcat to automatically reload an application after changes are made?",
+        "options": [
+            "By setting the 'reloadable' attribute to true in context.xml",
+            "By modifying the server.xml file",
+            "By using the 'auto-reload' option in the web.xml file",
+            "By restarting Tomcat manually"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 52
+    },
+    {
+        "question": "Which of the following directories contains Tomcat's library files?",
+        "options": [
+            "/lib",
+            "/libexec",
+            "/bin",
+            "/usr/lib"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 53
+    },
+    {
+        "question": "How can you deploy a web application in Tomcat?",
+        "options": [
+            "By copying the WAR file to the webapps directory",
+            "By editing the context.xml file",
+            "By modifying the server.xml file",
+            "By using the 'deploy' command"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 54
+    },
+    {
+        "question": "Which of the following is the correct way to configure a Tomcat server for clustering?",
+        "options": [
+            "Modify the cluster configuration in the server.xml file",
+            "Configure session replication in the web.xml file",
+            "Use a third-party load balancer",
+            "Modify the database connection pooling settings"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 55
+    },
+    {
+        "question": "Which of the following files contains the default user credentials for Tomcat's manager application?",
+        "options": [
+            "tomcat-users.xml",
+            "server.xml",
+            "context.xml",
+            "web.xml"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 56
+    },
+    {
+        "question": "What is the main purpose of the 'context.xml' file in Tomcat?",
+        "options": [
+            "To define the configuration of individual web applications",
+            "To define global configurations for the server",
+            "To configure logging settings",
+            "To configure the server's network settings"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 57
+    },
+    {
+        "question": "What does the 'reloadable' attribute in the context.xml file control?",
+        "options": [
+            "Whether the web application should reload when changes are detected",
+            "The maximum number of threads Tomcat should use",
+            "The size of the session timeout",
+            "The location of the log files"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 58
+    },
+    {
+        "question": "Which of the following Tomcat components is used to manage session persistence?",
+        "options": [
+            "Manager",
+            "Cluster",
+            "Context",
+            "Host"
+        ],
+        "correctIndex": 1,
+        "questionNumber": 59
+    },
+    {
+        "question": "Which directory in Apache Tomcat contains the server configuration files?",
+        "options": [
+            "/conf",
+            "/bin",
+            "/webapps",
+            "/lib"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 60
+    },
+    {
+        "question": "What is the role of the 'Connector' component in the server.xml file?",
+        "options": [
+            "It establishes a communication channel between the client and the server",
+            "It handles HTTP request processing",
+            "It configures the virtual hosts",
+            "It manages the session handling"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 61
+    },
+    {
+        "question": "Which of the following is a valid attribute of the <Connector> element in server.xml?",
+        "options": [
+            "protocol",
+            "timeout",
+            "host",
+            "sessions"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 62
+    },
+    {
+        "question": "Which of the following are valid methods for defining a servlet mapping in web.xml?",
+        "options": [
+            "By using the <servlet-mapping> element",
+            "By using the <filter-mapping> element",
+            "By using the <context-mapping> element",
+            "By using the <handler-mapping> element"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 63
+    },
+    {
+        "question": "How can you configure Tomcat to use an external database for user authentication?",
+        "options": [
+            "By configuring a DataSource resource in context.xml",
+            "By editing the tomcat-users.xml file",
+            "By modifying the server.xml file",
+            "By enabling the authentication module"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 64
+    },
+    {
+        "question": "What is the function of the 'SessionManager' component in Tomcat?",
+        "options": [
+            "It manages user sessions and session persistence",
+            "It manages servlet lifecycle events",
+            "It processes incoming HTTP requests",
+            "It compiles JSP files"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 65
+    },
+    {
+        "question": "How do you disable the Tomcat Manager web application?",
+        "options": [
+            "By removing the Manager application from the webapps directory",
+            "By modifying the server.xml file",
+            "By editing the tomcat-users.xml file",
+            "By disabling the 'manager' role"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 66
+    },
+    {
+        "question": "Which of the following is a valid approach to improve the performance of Tomcat?",
+        "options": [
+            "Increase the heap memory size",
+            "Use a reverse proxy server",
+            "Use connection pooling for database access",
+            "All of the above"
+        ],
+        "correctIndex": 3,
+        "questionNumber": 67
+    },
+    {
+        "question": "Which Tomcat configuration file contains the definitions for logging levels?",
+        "options": [
+            "logging.properties",
+            "server.xml",
+            "web.xml",
+            "context.xml"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 68
+    },
+    {
+        "question": "How can you enable access logging in Tomcat?",
+        "options": [
+            "By editing the access log valve configuration in server.xml",
+            "By enabling the logging module in the web.xml file",
+            "By modifying the log4j.properties file",
+            "By using the 'access-log' command"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 69
+    },
+    {
+        "question": "How can you configure Tomcat to serve multiple web applications on different ports?",
+        "options": [
+            "By configuring multiple <Connector> elements in server.xml",
+            "By using different virtual hosts in the server.xml file",
+            "By deploying separate WAR files for each application",
+            "By using multiple server instances"
+        ],
+        "correctIndex": 1,
+        "questionNumber": 70
+    },
+    {
+        "question": "What is the function of the 'Host' element in the server.xml file?",
+        "options": [
+            "It defines a virtual host for web applications",
+            "It handles HTTP request processing",
+            "It manages servlet configurations",
+            "It configures database connections"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 71
+    },
+    {
+        "question": "Which of the following is true about session replication in Tomcat?",
+        "options": [
+            "It is configured using the 'Cluster' element in the server.xml file",
+            "It is automatically enabled by default",
+            "It allows sessions to be shared between multiple Tomcat instances",
+            "It is used to encrypt session data"
+        ],
+        "correctIndex": 2,
+        "questionNumber": 72
+    },
+    {
+        "question": "What is the default character encoding used by Tomcat?",
+        "options": [
+            "UTF-8",
+            "ISO-8859-1",
+            "ASCII",
+            "UTF-16"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 73
+    },
+    {
+        "question": "How can you restrict access to specific IP addresses in Tomcat?",
+        "options": [
+            "By configuring the <Valve> element for RemoteAddrValve",
+            "By modifying the server.xml file",
+            "By configuring the firewall on the operating system",
+            "By using the web.xml file"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 74
+    },
+    {
+        "question": "Which Apache Tomcat component is responsible for compiling JSP files?",
+        "options": [
+            "Jasper",
+            "Catalina",
+            "Coyote",
+            "Manager"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 75
+    },
+    {
+        "question": "Which protocol does Apache Tomcat use to communicate with a web client by default?",
+        "options": [
+            "HTTP",
+            "HTTPS",
+            "FTP",
+            "SMTP"
+        ],
+        "correctIndex": 0,
+        "questionNumber": 76
+    }
+]

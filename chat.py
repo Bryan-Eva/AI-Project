@@ -91,8 +91,7 @@ class chat:
         self.config = config
         self.prompt = prompt_template()
         self.llm = Ollama(model=config.gpt)
-        self.document_chain = create_stuff_documents_chain(
-            self.llm, self.prompt)
+        self.document_chain = create_stuff_documents_chain(self.llm, self.prompt)
         self.f, self.retriever = load_trained_db(DB_FAISS_PATH=config.m)
         if config.islog:
             if not os.path.exists(config.logpath):
@@ -100,8 +99,7 @@ class chat:
             txtfile = genguidtxt()
             self.c_logPath = os.path.join(config.logpath, txtfile)
             setinfo(
-                c_logPath=self.c_logPath, text="initialized...config={0}".format(
-                    config)
+                c_logPath=self.c_logPath, text="initialized...config={0}".format(config)
             )
         self.retrieval_chain = create_retrieval_chain(
             self.retriever, self.document_chain
@@ -133,17 +131,24 @@ class chat:
             setinfo(
                 c_logPath=self.c_logPath, type="Q", text=f"{self.index:03}-{input_text}"
             )
-            setinfo(c_logPath=self.c_logPath, type="A",
-                    text=f"{self.index:03}-{ans}")
+            setinfo(c_logPath=self.c_logPath, type="A", text=f"{self.index:03}-{ans}")
             if self.config.isref:
                 setinfo(
                     c_logPath=self.c_logPath, type="doc", text=f"{self.index:03}-{doc}"
                 )
-            setinfo(c_logPath=self.c_logPath, type="time",
-                    text=f"{self.index:03}-{td}")
+            setinfo(c_logPath=self.c_logPath, type="time", text=f"{self.index:03}-{td}")
 
         self.index += 1
         return ans
+
+    def ask_stream(self, input_text):
+        # for response in self.retrieval_chain.stream(
+        #     {"input": input_text, "context": self.context}
+        # ):
+        #     yield response
+        return self.retrieval_chain.stream(
+            {"input": input_text, "context": self.context}
+        )
 
 
 def get_default_chat_instance():

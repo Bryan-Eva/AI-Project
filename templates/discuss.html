@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block style %}
+
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="collection">
+        {% for item in items %}
+        <a href="/discuss/{{item['id']}}" class="collection-item">{{item['title']}}</a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% block style %}
+<style>
+    .chat-box {
+        height: 400px;
+        overflow-y: scroll;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #fff;
+    }
+
+    .message {
+        margin-bottom: 10px;
+    }
+
+    .message.user {
+        text-align: right;
+    }
+
+    .message.bot {
+        text-align: left;
+    }
+
+    .input-field.input-outlined {
+        >input {
+            border: 2px solid #eee;
+            padding: 12px 16px 14px;
+            width: calc(100% - 2.5rem);
+            float: none;
+            display: block;
+            border-radius: 4px;
+            transition: box-shadow, border-color 0.15s;
+
+            &:focus:not([readonly]) {
+                border-color: #26A69B;
+                box-shadow: 0 1px 0 0px #26A69B;
+            }
+        }
+
+        >label {
+            left: 27px;
+            display: inline-flex;
+            width: auto !important;
+
+            &.active {
+                background: white;
+                border-left: 4px solid white;
+                border-right: 4px solid white;
+                transform: translateY(-1.75rem);
+                top: 1rem;
+            }
+        }
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Chat with Ollama</h2>
+    <div class="chat-box" id="chat-box"></div>
+    <div class="input-field input-outlined">
+        <input id="chat-input" type="text">
+        <label for="chat-input">Type your message here...</label>
+    </div>
+    <button class="btn waves-effect waves-light" id="chat-button">Submit
+        <i class="material-icons right">send</i>
+    </button>
+</div>
+
+<script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked-highlight/lib/index.umd.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.0/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.0/languages/go.min.js"></script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        var socket = io.connect('http://127.0.0.1:5555');
+        var chatBox = document.getElementById("chat-box");
+        var chatInput = document.getElementById("chat-input");
+        var chatButton = document.getElementById("chat-button");
+        var botMessage = "";
+        const { Marked } = globalThis.marked;
+        const { markedHighlight } = globalThis.markedHighlight;
+
+        const marked = new Marked(
+            markedHighlight({
+                emptyLangClass: 'hljs',
+                langPrefix: 'hljs language-',
+                highlight(code, lang, info) {
+                    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+                    return hljs.highlight(code, { language }).value;
+                }
+            })
+        );
+
+
+        socket.on('connect', function () {
+            socket.emit('connect_event', { data: 'User connected!' });
+        });
+
+        socket.on('server_response', function (msg) {
+            botMessage += msg.data;
+            var lastMessage = chatBox.lastChild;
+            if (lastMessage && lastMessage.className.includes("bot")) {
+                lastMessage.innerHTML = "Bot: " + marked.parse(botMessage);
+            } else {
+                var message = document.createElement("div");
+                message.className = "message bot";
+                message.innerHTML = "Bot: " + marked.parse(botMessage);
+                chatBox.appendChild(message);
+            }
+            chatBox.scrollTop = chatBox.scrollHeight;
+        });
+
+        socket.on('server_response_end', function () {
+            botMessage = "";
+        });
+
+        chatButton.addEventListener("click", function () {
+            var userMessage = chatInput.value;
+            if (userMessage.trim() !== "") {
+                var message = document.createElement("div");
+                message.className = "message user";
+                message.textContent = "You: " + userMessage;
+                chatBox.appendChild(message);
+                chatBox.scrollTop = chatBox.scrollHeight;
+
+                socket.emit('client_event', { data: userMessage });
+                chatInput.value = "";
+            }
+        });
+
+        chatInput.addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+                chatButton.click();
+            }
+        });
+    });
+</script>
+{% endblock %}
